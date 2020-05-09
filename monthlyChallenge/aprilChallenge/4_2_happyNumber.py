@@ -10,6 +10,9 @@
     of its digits, and repeat the process until the number equals 1 
     (where it will stay), or it loops endlessly in a cycle which does not 
     include 1. Those numbers for which this process ends in 1 are happy numbers.
+    
+    A number will not be a Happy Number when it makes a loop in its sequence 
+    that is it touches a number in sequence which already been touched.
 
     Return True if n is a happy number, and False if not.
     
@@ -29,16 +32,19 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        happyNum = n
-        for i in range(10):
+        unique = set()
+        
+        while True:
             sum = 0
-            for i in str(happyNum):
+            for i in str(n):
                 sum += int(i)**2
-            happyNum = sum
-            if happyNum == 1:
+            n = sum
+            
+            if n == 1 or n in unique:
                 break
-        return happyNum == 1
                 
+            unique.add(n)
+        return n == 1
 
 
 """other faster methods (from other submissions)
