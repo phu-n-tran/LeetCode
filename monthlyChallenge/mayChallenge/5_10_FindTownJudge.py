@@ -1,5 +1,5 @@
 # --------------------------------------------------------------------------
-# Name:        Cousins in Binary Tree
+# Name:        Find the Town Judge
 # Author(s):   Phu Tran
 # --------------------------------------------------------------------------
 """
@@ -44,41 +44,35 @@
         4) trust[i][0] != trust[i][1]
         5) 1 <= trust[i][0], trust[i][1] <= N
 """
-
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution(object):
-    def isCousins(self, root, x, y):
+    def findJudge(self, N, trust):
         """
-        :type root: TreeNode
-        :type x: int
-        :type y: int
-        :rtype: bool
+        :type N: int
+        :type trust: List[List[int]]
+        :rtype: int
         """
-        x_parent, x_depth = self.getParentNDepth(root, -1, 0, x)
-        y_parent, y_depth = self.getParentNDepth(root, -1, 0, y)
+        if len(trust) == 1:
+            return trust[0][1]
         
-        if x_parent != y_parent and x_depth == y_depth:
-            return True
-       
-    def getParentNDepth(self, root, p, depth, target):
-        if root: 
-            # based case
-            if root.val == target:
-                return (p, depth)
-            
-            # Return level if Node is present in left subtree
-            rl = self.getParentNDepth(root.left, root.val, depth+1, target)
-            if rl:
-                return rl
-            
-            # Else search in right subtree 
-            return self.getParentNDepth(root.right, root.val, depth+1, target)
-            
+        d = {}
+        for i in trust:
+            d[i[0]] = d.get(i[0], []) + [i[1]]
+        
+        if len(d) == N:
+            return -1
+        
+        missing = [i for i in range(1, N+1) if i not in d]
+        
+        result = -1
+        for i in missing:
+            result = i
+            for key in d:
+                if i not in d[key]:
+                    result = -1
+                    break
+        
+        return result
+                    
     
     
 
