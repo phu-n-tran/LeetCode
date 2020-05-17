@@ -39,27 +39,35 @@ class Solution(object):
         if head is None or head.next is None:
             return head
         
+        # act as iterate pointer for odd
         oddHead = head
+        # point to the head of the first even position 2 and not moving
         evenHead = head.next
-        iterEven = evenHead        
+        # act as iterate pointer for even
+        iterEven = evenHead     
+        # iterate pointer
         iterHead = evenHead.next
         
         while iterHead is not None:
-            # iterHead is in odd position
+            # iterHead is in odd position, update odd
             oddHead.next = iterHead
             oddHead = iterHead
             
+            # move iterate pointer to even position
             iterHead = iterHead.next
             if iterHead is None:
                 break
             
-            # iterHead is in even position
+            # iterHead is in even position, update even
             iterEven.next = iterHead
             iterEven = iterHead
             
+            # move iterate pointer to odd position
             iterHead = iterHead.next
-            
+        
+        # take the end of odd and attach it to the begin of even
         oddHead.next = evenHead
+        # update the end of even to prevent cycle in the linked list
         iterEven.next = None
             
         return head
