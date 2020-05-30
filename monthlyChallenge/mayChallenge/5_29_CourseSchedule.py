@@ -76,7 +76,8 @@ class Solution(object):
         visited = [False] * (numCourses)
         stack = [False] * (numCourses)
         
-        for v in range(numCourses):
+        # for v in range(numCourses): 
+        for v in graph.keys(): # b/c this is defaultdict 
             if not visited[v]:
                 if hasCycle(graph, visited, stack, v):
                     return False
