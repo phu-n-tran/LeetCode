@@ -1,9 +1,9 @@
 # --------------------------------------------------------------------------
-# Name:        Uncrossed Lines (dynamic programming approach)
+# Name:        Invert a Binary Tree
 # Author(s):   Phu Tran
 # --------------------------------------------------------------------------
 """
-    nvert a binary tree.
+    Invert a binary tree.
 
     Example:
         Input: [4,2,7,1,3,6,9]
