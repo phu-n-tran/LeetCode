@@ -25,6 +25,7 @@
         1. All inputs are consist of lowercase letters a-z.
         2. The values of words are distinct.
     source: https://www.youtube.com/watch?v=6EuYKlm2GkU
+    https://leetcode.com/problems/word-search-ii/discuss/712733/Python-Trie-solution-with-dfs-explained
             
 """
 
