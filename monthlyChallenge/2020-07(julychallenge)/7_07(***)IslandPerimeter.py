@@ -27,6 +27,7 @@
       Explanation: 
         The perimeter is the 16 yellow stripes in the image below:
         SEE 7_07_example.PNG
+        https://www.youtube.com/watch?time_continue=2&v=1Uw_y9H4z5E&feature=emb_logo
 """
 
 
