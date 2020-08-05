@@ -23,7 +23,8 @@
       You may assume that all words are consist of lowercase letters a-z.
       
     Hint:
-      You should be familiar with how a Trie works. If not, please work on this problem: Implement Trie (Prefix Tree) first.
+      You should be familiar with how a Trie works. If not, please work 
+      on this problem: Implement Trie (Prefix Tree) first.
 """
 
 
