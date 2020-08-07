@@ -1,37 +1,79 @@
 # --------------------------------------------------------------------------
-# Name:        Detect Capital
+# Name:        Vertical Order Traversal of a Binary Tree
 # Author(s):   Phu Tran
 # --------------------------------------------------------------------------
 """
-    Given a word, you need to judge whether the usage of capitals in it is right or not.
-    We define the usage of capitals in a word to be right when one of the following cases holds:
-    All letters in this word are capitals, like "USA".
-    All letters in this word are not capitals, like "leetcode".
-    Only the first letter in this word is capital, like "Google".
-    Otherwise, we define that this word doesn't use capitals in a right way.
+    Given a binary tree, return the vertical order traversal of its nodes values.
+
+    For each node at position (X, Y), its left and right children respectively 
+    will be at positions (X-1, Y-1) and (X+1, Y-1).
+
+    Running a vertical line from X = -infinity to X = +infinity, whenever the 
+    vertical line touches some nodes, we report the values of the nodes in order
+    from top to bottom (decreasing Y coordinates).
+
+    If two nodes have the same position, then the value of the node that is 
+    reported first is the value that is smaller.
+
+    Return an list of non-empty reports in order of X coordinate. 
+    Every report will have a list of values of nodes.
+
+ 
     Example 1:
-      Input: "USA"
-      Output: True
+        Input: [3,9,20,null,null,15,7]
+        Output: [[9],[3,15],[20],[7]]
+        Explanation: 
+            Without loss of generality, we can assume the root node is at position (0, 0):
+            Then, the node with value 9 occurs at position (-1, -1);
+            The nodes with values 3 and 15 occur at positions (0, 0) and (0, -2);
+            The node with value 20 occurs at position (1, -1);
+            The node with value 7 occurs at position (2, -2).
+
     Example 2:
-      Input: "FlaG"
-      Output: False
-    Note: The input will be a non-empty word consisting of uppercase and lowercase latin letters.
+        Input: [1,2,3,4,5,6,7]
+        Output: [[4],[2],[1,5,6],[3],[7]]
+        Explanation: 
+        The node with value 5 and the node with value 6 have the same position according to the given scheme.
+        However, in the report "[1,5,6]", the node value of 5 comes first since 5 is smaller than 6.
+ 
+    Note:
+        1. The tree will have between 1 and 1000 nodes.
+        2. Each node's value will be between 0 and 1000.
 """
 
 
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution(object):
-    def detectCapitalUse(self, word):
+    def verticalTraversal(self, root):
         """
-        :type word: str
-        :rtype: bool
+        :type root: TreeNode
+        :rtype: List[List[int]]
         """
-        if len(word) == 1 or word.islower() or word.isupper() or (word[0].isupper() and word[1:].islower()):
-            return True
-            
+        def inOrderTracking(root, x_pos, y_pos, result):
+            if root:
+                # key will be x position, value will be tuple (value, y_pos)
+                # note: use y_pos to keep track of the order
+                result[x_pos] = result.get(x_pos, []) + [(root.val, y_pos)]
+                inOrderTracking(root.left, x_pos-1, y_pos-1, result)
+                inOrderTracking(root.right, x_pos+1, y_pos-1, result)
+                
+        result = dict()
+        inOrderTracking(root, 0, 0, result)
+        # print(result)
         
+        finalList = []
+        for i in sorted(result):
+            # first sort the tuple in list of each key, (2nd ele by descending, 1st ele by ascending)
+            # then get rid of the tuple and only keep the 1st ele (value)
+            # finally append it in order
+            finalList.append([ele[0] for ele in sorted(result[i], key=lambda x: (x[1], -x[0]), reverse=True)])
         
-        
-        
+        return finalList
         
         
         
