@@ -1,5 +1,6 @@
 # based on https://leetcode.com/discuss/interview-question/786821/indeed-oa-2020-parents-and-children-graph?fbclid=IwAR0m27Yy5iW_kbZUbgLLPh5OdSTdFYmAOdMSCi2EdRZMVs_wnAjr8upncJI
-# find child with zero and one parent
+# given parent_child pairs, find all child with zero or one parent
+
 
 parent_child_pairs = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5),(4, 8), (4, 9), (9, 11), (14, 4), (13, 12), (12, 9)]
 
