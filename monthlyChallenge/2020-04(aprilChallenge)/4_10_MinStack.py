@@ -1,4 +1,3 @@
-
 # --------------------------------------------------------------------------
 # Name:        Group Anagrams
 # Author(s):   Phu Tran
@@ -38,6 +37,8 @@
     
    
 """
+
+
 class MinStack(object):
 
     def __init__(self):
@@ -101,5 +102,4 @@ class MinStack(object):
 
 """other faster methods (from other submissions)
 ##################################################
-
 """
