@@ -32,10 +32,10 @@
             (-3, -3)
             (0, -2)
             (-2, -2) 
+            
+            
     Constraints:
           Methods pop, top and getMin operations will always be called on non-empty stacks.
-    
-   
 """
 
 
